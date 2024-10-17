@@ -1,17 +1,16 @@
-import { useState } from 'react'
+
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css'
+import ChatBot from './ChatBot'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
+    <Router>
+      <Routes>
+      <Route path="/" element={<Navigate to="/chat" replace />} />
+        <Route path="/:slug" element={<ChatBot />} />
+      </Routes>
+    </Router>
   )
 }
 
